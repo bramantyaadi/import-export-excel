@@ -15,6 +15,11 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function listdata()
+    {
+        $siswa = Siswa::all();
+        return view('siswa.listdata', ['siswa' => $siswa]);
+    }
     public function index()
     {
         //
@@ -44,6 +49,12 @@ class SiswaController extends Controller
             'kelas' => $request->kelas,
             'absen' => $request->absen,
         ]);
+
+        $siswa = new Siswa;
+        $siswa->nama = $request->get('nama');
+        $siswa->alamat = $request->get('alamat');
+        $siswa->kelas = $request->get('kelas');
+        $siswa->absen = $request->get('absen');
         return 'Siswa berhasil disimpan';
     }
 
@@ -55,7 +66,7 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        //
+        return view('siswa.listdata', ['siswa' => $siswa]);
     }
 
     /**
