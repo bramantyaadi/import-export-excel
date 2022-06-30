@@ -19,7 +19,10 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Siswa::paginate(5);
-        return view('siswa.index', ['siswa' => $siswa]);
+
+        $siswa_chart = Siswa::select('kelas', DB::raw('count(*) as total'))
+        ->groupBy('kelas')->get()->toArray();
+        return view('siswa.index', ['siswa' => $siswa, 'siswa_chart' => $siswa_chart]);
     }
 
     /**
