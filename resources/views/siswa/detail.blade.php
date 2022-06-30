@@ -16,7 +16,7 @@
                         <li class="list-group-item"><b>Absen: </b>{{ $siswa->absen}}</li>
                     </ul>
                 </div>
-                <a class="btn btn-success mt-3" href="{{ route('siswa.create') }}">Kembali</a>
+                <a class="btn btn-success mt-3" href="{{ route('siswa.index') }}">Kembali</a>
 
             </div>
         </div>

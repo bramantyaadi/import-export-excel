@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
@@ -15,14 +16,10 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function listdata()
-    {
-        $siswa = Siswa::all();
-        return view('siswa.listdata', ['siswa' => $siswa]);
-    }
     public function index()
     {
-        //
+        $siswa = Siswa::paginate(5);
+        return view('siswa.index', ['siswa' => $siswa]);
     }
 
     /**
@@ -55,7 +52,8 @@ class SiswaController extends Controller
         $siswa->alamat = $request->get('alamat');
         $siswa->kelas = $request->get('kelas');
         $siswa->absen = $request->get('absen');
-        return 'Siswa berhasil disimpan';
+        return redirect()->route('siswa.index')
+        ->with('success', 'Data Siswa Berhasil Ditambahkan');
     }
 
     /**
@@ -66,7 +64,7 @@ class SiswaController extends Controller
      */
     public function show(Siswa $siswa)
     {
-        return view('siswa.listdata', ['siswa' => $siswa]);
+        return view('siswa.detail', ['siswa' => $siswa]);
     }
 
     /**
@@ -110,7 +108,7 @@ class SiswaController extends Controller
      */
     public function destroy(Siswa $siswa)
     {
-        //
+       //
     }
 
     public function export() 
@@ -124,9 +122,9 @@ class SiswaController extends Controller
         // dd($request->all());
         $file = $request->file('file');
         $namafile = $file->getClientOriginalName();
-        $file->move('Siswa', $namafile);
+        $file->move('DataSiswa', $namafile);
 
-        Excel::import(new UsersImport, public_path('/Siswa/'.$namafile));
-        return redirect('/siswa/create')->with('success', 'All good!');
+        Excel::import(new UsersImport, public_path('/DataSiswa/'.$namafile));
+        return redirect('/siswa/index')->with('success', 'All good!');
     }
 }

@@ -15,10 +15,12 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('siswa/export', [SiswaController::class, 'export']);
 Route::post('siswa/import', [SiswaController::class, 'import']);
 Route::get('siswa/listdata', [SiswaController::class, 'listdata']);
 Route::resource('siswa', SiswaController::class);
+
+Route::get('/', function () {
+    return view('welcome');
+});
