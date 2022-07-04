@@ -20,6 +20,10 @@
             <div class="form-group">
                 <label for="nama">Nama: </label>
                 <input type="nama" class="form-control" required="required" name="nama"><br>
+                <label for="nama">Kelas: </label>
+                <input type="kelas" class="form-control" required="required" name="kelas"><br>
+                <label for="nama">Absen: </label>
+                <input type="absen" class="form-control" required="required" name="absen"><br>
                 <label for="nama">Alamat: </label>
                 <input type="alamat" class="form-control" required="required" name="alamat"><br>
 
@@ -38,13 +42,7 @@
                     <input type="text" name="longitude" id="longitude" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Pilih</button>
-                <div>
-                    <br>
-                    <label for="nama">Kelas: </label>
-                    <input type="kelas" class="form-control" required="required" name="kelas"><br>
-                    <label for="nama">Absen: </label>
-                    <input type="absen" class="form-control" required="required" name="absen"><br>
-                </div>
+                
                 <button type="submit" name="submit" class="btn btn-primary text-center">Simpan</button>
             </div>
             <div wire:ignore id="map" style="width: 100%; height: 500px;"> </div>
@@ -69,11 +67,22 @@
         src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&libraries=places"></script>
 
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('map').setView([-7.275973, 112.808304], 13);
         var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
+            maxZoom: 30,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-        
+        var marker = L.marker([51.5, -0.09]).addTo(map);
+        var circle = L.circle([51.508, -0.11], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+        var polygon = L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ]).addTo(map);
     </script>
 @endpush
