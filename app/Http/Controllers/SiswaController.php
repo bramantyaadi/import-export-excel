@@ -46,6 +46,8 @@ class SiswaController extends Controller
         Siswa::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
+            'koor_long'=> $request->koor_long,
+            'koor_lat' => $request->koor_lat,
             'kelas' => $request->kelas,
             'absen' => $request->absen,
         ]);
@@ -53,6 +55,8 @@ class SiswaController extends Controller
         $siswa = new Siswa;
         $siswa->nama = $request->get('nama');
         $siswa->alamat = $request->get('alamat');
+        $siswa->koor_long = $request->get('koor_long');
+        $siswa->koor_lat = $request->get('koor_lat');
         $siswa->kelas = $request->get('kelas');
         $siswa->absen = $request->get('absen');
         return redirect()->route('siswa.index')
@@ -96,6 +100,8 @@ class SiswaController extends Controller
         
         $siswa->nama =$request->nama;
         $siswa->alamat =$request->alamat;
+        $siswa->koor_long = $request->koor_long;
+        $siswa->koor_lat = $request->koor_lat;
         $siswa->kelas =$request->kelas;
         $siswa->absen =$request->absen;
 

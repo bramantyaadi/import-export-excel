@@ -14,6 +14,8 @@ class Siswa extends Model
     protected $fillable = [
         'nama',
         'alamat',
+        'koor_long',
+        'koor_lat',
         'kelas',
         'absen'
     ];

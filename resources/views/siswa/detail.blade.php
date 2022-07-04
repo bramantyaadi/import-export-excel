@@ -5,8 +5,8 @@
     <div class="container mt-5">
         <div class="row justify-content-center align-items-center">
             <div class="card" style="width: 24rem;">
-                <div class="card-header">
-                    Data Semua Siswa
+                <div class="card-header" style="text-align: center">
+                    Data Siswa
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
