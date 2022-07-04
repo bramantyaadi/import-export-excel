@@ -26,27 +26,25 @@
                 <input type="absen" class="form-control" required="required" name="absen"><br>
                 <label for="nama">Alamat: </label>
                 <input type="alamat" class="form-control" required="required" name="alamat"><br>
-
-                <div class="form-group">
-                    <label>Pilih lokasi</label>
-                    <input type="text" name="location" id="location" class="form-control" placeholder="Choose Location">
-                </div>
-
-                <div class="form-group" id="latitudeArea">
-                    <label>Latitude</label>
-                    <input type="text" id="latitude" name="latitude" class="form-control">
-                </div>
-
-                <div class="form-group" id="longtitudeArea">
-                    <label>Longitude</label>
-                    <input type="text" name="longitude" id="longitude" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Pilih</button>
-                
-                <button type="submit" name="submit" class="btn btn-primary text-center">Simpan</button>
-            </div>
             <div wire:ignore id="map" style="width: 100%; height: 500px;"> </div>
+            <div class="form-group">
+                <label>Pilih lokasi</label>
+                <input type="text" name="location" id="location" class="form-control" placeholder="Choose Location">
+            </div>
+
+            <div class="form-group" id="latitudeArea">
+                <label>Latitude</label>
+                <input type="text" id="latitude" name="latitude" class="form-control">
+            </div>
+
+            <div class="form-group" id="longtitudeArea">
+                <label>Longitude</label>
+                <input type="text" name="longitude" id="longitude" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Pilih</button>
             
+            <button type="submit" name="submit" class="btn btn-primary text-center">Simpan</button>
+        </div>           
             
         </form>
 
@@ -72,17 +70,24 @@
             maxZoom: 30,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-        var marker = L.marker([51.5, -0.09]).addTo(map);
-        var circle = L.circle([51.508, -0.11], {
+        var marker = L.marker([-7.275973, 112.808304]).addTo(map);
+        var circle = L.circle([-7.275973, 112.808304], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
-            radius: 500
+            radius: 200
         }).addTo(map);
         var polygon = L.polygon([
             [51.509, -0.08],
             [51.503, -0.06],
             [51.51, -0.047]
         ]).addTo(map);
+        // map.on('click', (0) => {
+        //     var longituden = e.lngLat.lngLat
+        //     var latitude == e.langLat.lat
+
+        //     @this.long = longitude
+        //     @this.lat = latitude
+        // })
     </script>
 @endpush
