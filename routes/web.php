@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('siswa/export/', [SiswaController::class, 'export']);
+Route::post('siswa/import/', [SiswaController::class, 'import']);
+Route::resource('siswa', SiswaController::class);
+
