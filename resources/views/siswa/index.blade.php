@@ -130,7 +130,7 @@
                 type: 'column'
             },
             title: {
-                text: 'Nama Siswa'
+                text: 'Tabel Jumlah Siswa Setiap Kelas'
             },
             xAxis: {
                 categories: kelas,
