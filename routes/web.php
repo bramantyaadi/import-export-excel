@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('siswa/export', [SiswaController::class, 'export']);
+Route::post('siswa/import', [SiswaController::class, 'import']);
+Route::get('siswa/listdata', [SiswaController::class, 'listdata']);
+Route::resource('siswa', SiswaController::class);
 
 Route::get('/', function () {
     return view('welcome');
